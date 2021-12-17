@@ -1,27 +1,61 @@
-// import React, {useState} from "react";
-// import axios from "axios";
+import React, {useState} from "react";
+import axios from "axios";
 
+function Login(props){
+    const[email,setEmail] = useState("");
+    const[password,setPassword] = useState("");
 
-// <form action="action_page.php" method="post">
-//             <div class="imgcontainer">
-//                 <img src="img_avatar2.png" alt="Avatar" class="avatar">
-//             </div>
+    async function handleSubmit(event){
+        event.preventDefault();
+        let response = await axios.post("http://localhost:5000/api/users/login", {
+            email:email,
+            password: password,
+        });
+        console.log(response.data);
+        //save token in local storage and refresh page
+        localStorage.setItem("token", response.data);
+        window.location = "/";
+    }
 
-//             <div class="container">
-//                 <label for="uname"><b>Username</b></label>
-//                 <input type="text" placeholder="Enter Username" name="uname" required>
+    return( 
+        <div className="container">
+        <div class="row">
+          <div class="col"><h3>Enter Your Information</h3></div>
+          <div>
+            <div className="card text-white bg-dark" style={{ width: "18rem" }}>
+              <div className="card-body">
+                <form onSubmit={handleSubmit}>
+                  <div className="form-group" size="lg" controlId="email">
+                    <label className="form-label">Email</label>
+                    <input
+                      autoFocus
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+  
+                    <div className="form-group" size="lg" controlId="password">
+                      <label className="form-label">Password</label>
+                      <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-secondary" type="button">
+                      <h3>Login</h3>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  );
 
-//                 <label for="psw"><b>Password</b></label>
-//                 <input type="password" placeholder="Enter Password" name="psw" required>
+}
 
-//                 <button type="submit">Login</button>
-//                 <label>
-//                 <input type="checkbox" checked="checked" name="remember"> Remember me
-//                 </label>
-//             </div>
-
-//             <div class="container" style="background-color:#f1f1f1">
-//                 <button type="button" class="cancelbtn">Cancel</button>
-//                 <span class="psw">Forgot <a href="#">password?</a></span>
-//             </div>
-//     </form>
+export default Login
