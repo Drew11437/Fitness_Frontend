@@ -1,4 +1,4 @@
-import Login from "../Login/Login";
+import Login from "../Login/Login"
 import React, { useState } from "react";
 import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -7,6 +7,7 @@ function Register(){
     const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
     const [Name, setName] = useState("");
+    const [isAdmin, setIsAdmin] = useState(false);
 
   
 	async function handleSubmit(event) {
@@ -14,7 +15,8 @@ function Register(){
       let registerPost = {
         name: Name,
 		email: email,
-		password: password
+		password: password,
+        isAdmin: isAdmin
 		};
 	    let response = await axios.post("http://localhost:5000/api/users/register", registerPost);
 		console.log(response.data)
@@ -33,7 +35,7 @@ function Register(){
               <form onSubmit={handleSubmit}>
                 <div className="form-group" size="lg" controlId="name">
                     <label className="form-label">
-                        <h3>Name</h3>
+                        <h3>Fitness Pro</h3>
                     <input autoFocus type="Name" value={Name} onChange={(e) => setName(e.target.value)} />
                     </label>
                 </div>
@@ -44,6 +46,8 @@ function Register(){
                 <div className="form-group" size="lg" controlId="password">
                     <label>Password</label>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control"/>
+                    <p>Register as Trainer?</p>
+                    <input type = "checkbox" onChange={()=>{setIsAdmin(true)}}/>
                 <p>Create an account</p>
                 <button class="bg-dark" type='submit' ><h3>Register</h3></button>
                 </div>

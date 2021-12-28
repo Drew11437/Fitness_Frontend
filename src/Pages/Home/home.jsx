@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import Like from "../../components/Likes/Likes"
+// import { LikeButton } from "@lyket/react";
 
 
 
@@ -50,123 +51,53 @@ function Home() {
     getCurrentUser();
   }, [newLog]);
 
-  //    async function likePost(){
-//      const jwt = localStorage.getItem("token");
-//      let config ={
-//        headers:{
-//          "x-auth-token": jwt,
-//        },
-//      };
-//     await axios
-//     .put("http://localhost:5000/api/like/",{like: postId.like + 1}, config)
-//     .then((res) => setlike(res.data));
-//     const newData = data.map(post =>{
-//       if(post._id==like._id){
-//         return setlike
-//       }else{
-//         return post
-//       }
-//     })
-//     setData(newData)
-// }
 
-
-// useEffect(() => {
-//   getCurrentUser();
-// }, [newLog]);
-
-// const likePost = (i) =>{
-//   const jwt = localStorage.getItem("token");
-//     fetch('/like', {
-//       method:"put",
-//       headers:{
-//         "Content-Type":"application/json",
-//         "Authorization":"Bearer "+localStorage.getItem("jwt")
-//       },
-//       body:JSON.stringify({
-//         postId: i
-//       })
-//     }).then(res=>res.json())
-//     .then(setlike=>{
-      
-//       const newData = data.map(post =>{
-//         if(post._id==setlike._id){
-//           return setlike
-//         }else{
-//           return post
-//         }
-//       })
-//       setData(newData)
-//     }) 
-// }
 
 
   return (
     <div>
       <h1> {userProfile && userProfile.name}</h1>
-      <div className="Comment">
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <div className="card">
-            <div className="card-header">Post</div>
-            <div class="card-body">
-              <blockquote className="blockquote mb-0">
-                <div className="form-group" size="lg" controlId="name">
-                  <label className="form-label">
-                    post
-                    <input
-                      autoFocus
-                      type="workout"
-                      value={workout}
-                      onChange={(e) => setWorkout(e.target.value)}
-                    />
-                    <label>
-                    Image
-                    <div>
-                    post
-                    <input
-                      autoFocus
-                      type="file"
-                      value={meal}
-                      onChange={(e) => setmeal(e.target.value)}
-                    />
-                      <img src={setmeal}/>
-                    </div>
-                    </label>
-                    <button type="submit">post</button>
-                    
-                  </label>
-                </div>
-                
-              </blockquote>
-            </div>
-          </div>
-        </form>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card">
+    <h5 class="card-title">Meal Log</h5>
+      <input type="file" id="image_input" accept="image/png, image/jpg"/>
+      <div id="display_image"></div>
+      <div class="card-body">
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
-      {/* Pascal helped with the optional chaining */}
-      <ul>
-        {userProfile &&
-          userProfile.posts?.map((post, i) => (
-            <>
-              <div className="card w-75">
-                <div className="cardcomment" >
-                <li key={i}>Comment:  {post.workout}</li>
-              <ul>
-                  <li key={i}>Image{post.meal}</li>
-              </ul>
-              <ul>
-                <LikeButton onclick={likePost(post.i)}/>
-                <h6>{log.like.lenght}likes</h6>
-              </ul>
-              <ul>
-                <li key={i}>{log.createdAt}</li>
-              </ul>
-                </div>
-              </div>
-            </>
-          ))}
-      </ul>
-      
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="..."/>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="..."/>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="..."/>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <input type="text" />
+      </div>
+    </div>
+  </div>
+</div>
     </div>
   );
 }
+
 export default Home;
