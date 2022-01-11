@@ -1,61 +1,51 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import "./login.css";
 
-function Login(props){
-    const[email,setEmail] = useState("");
-    const[password,setPassword] = useState("");
+function Login(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    async function handleSubmit(event){
-        event.preventDefault();
-        let response = await axios.post("http://localhost:5000/api/users/login", {
-            email:email,
-            password: password,
-        });
-        console.log(response.data);
-        //save token in local storage and refresh page
-        localStorage.setItem("token", response.data);
-        window.location = "/";
-    }
+  async function handleSubmit(event) {
+    event.preventDefault();
+    let response = await axios.post("http://localhost:5000/api/users/login", {
+      email: email,
+      password: password,
+    });
+    console.log(response.data);
+    // Save token in local storage and refresh page
+    localStorage.setItem("token", response.data);
+    window.location = "/";
+   }
 
-    return( 
-        <div className="container">
-        <div class="row">
-          <div class="col"><h3>Enter Your Information</h3></div>
-          <div>
-            <div className="card text-white bg-dark" style={{ width: "18rem" }}>
-              <div className="card-body">
-                <form onSubmit={handleSubmit}>
-                  <div className="form-group" size="lg" controlId="email">
-                    <label className="form-label">Email</label>
-                    <input
-                      autoFocus
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-  
-                    <div className="form-group" size="lg" controlId="password">
-                      <label className="form-label">Password</label>
-                      <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-secondary" type="submit">
-                      <h3>Login</h3>
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  );
+   
+  return (
+    // <html lan="en" and dir="Itr">
+    //   <head>
+    //     <meta charset="utf-8"/>
+    //       <titile> Fit Friendly Login Form</titile>
+    //       <link rel="stylesheet" href="login.css"/>
 
-}
+    //       </head>
+    //       <body>
+            <form class="box" onSubmit={handleSubmit}e method="POST">
+            <h1>
+              Fit Login
+            </h1>
+              <input type="text" name="" placeholder="Enter Username" id="username"
+                value={email} onChange={(e) => setEmail(e.target.value)}/>
+                  <input type="password" name="" placeholder="Enter password" id="password" 
+                  value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input type="submit" name="" value="Login" >
+          </input>
 
-export default Login
+
+        </form>
+
+    //   </body>
+
+
+    // </html>
+  )
+ }
+export default Login;

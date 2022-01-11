@@ -1,82 +1,89 @@
-import axios from "axios"
-import react from "react"
+import "./schedule.css"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+function scheduler({user}){
 
 
-function schedule({user}){
 
-    var myNodelist = document.getElementsByTagName("LI");
-    var i;
-    for (i = 0; i < myNodelist.length; i++) {
-      var span = document.createElement("SPAN");
-      var txt = document.createTextNode("\u00D7");
-      span.className = "close";
-      span.appendChild(txt);
-      myNodelist[i].appendChild(span);
-    }
-    
-    // Click on a close button to hide the current list item
-    var close = document.getElementsByClassName("close");
-    var i;
-    for (i = 0; i < close.length; i++) {
-      close[i].onclick = function() {
-        var div = this.parentElement;
-        div.style.display = "none";
-      }
-    }
-    
-    // Add a "checked" symbol when clicking on a list item
-    var list = document.querySelector('ul');
-    list.addEventListener('click', function(ev) {
-      if (ev.target.tagName === 'LI') {
-        ev.target.classList.toggle('checked');
-      }
-    }, false);
-    
-    // Create a new list item when clicking on the "Add" button
-    function newElement() {
-      var li = document.createElement("li");
-      var inputValue = document.getElementById("myInput").value;
-      var t = document.createTextNode(inputValue);
-      li.appendChild(t);
-      if (inputValue === '') {
-        alert("You must write something!");
-      } else {
-        document.getElementById("myUL").appendChild(li);
-      }
-      document.getElementById("myInput").value = "";
-    
-      var span = document.createElement("SPAN");
-      var txt = document.createTextNode("\u00D7");
-      span.className = "close";
-      span.appendChild(txt);
-      li.appendChild(span);
-    
-      for (i = 0; i < close.length; i++) {
-        close[i].onclick = function() {
-          var div = this.parentElement;
-          div.style.display = "none";
-        }
-      }
-    }
 
-    return(
-        <div>
-            <div id="myDIV" class="header">
-               <h2>Schedule</h2>
-                    <input type="text" id="myInput" placeholder="Title..."/>
-                        <span onclick="newElement()" class="addBtn">Add</span>
-                            </div>
-                        <ul id="myUL">
-                      <li>Hit the gym</li>
-                     <li class="checked">Pay bills</li>
-                <li>Meet George</li>
-                    <li>Buy eggs</li>
-                    <li>Read a book</li>
-                    <li>Organize office</li>
-            </ul>
-        </div>
-    )
+
+
+
+
+
+
+
+
+  return(
+    <div class= "booking-form-box">
+      <div class="radio-btn">
+      <input type="radio" class="btn" name="check" checked= "checked"/><span>Hour</span>
+      <input type="radio" class="btn" name="check"/><span>30min</span>
+      <input type="radio" class="btn" name="check"/><span>Consultation</span>
+      </div>
+
+      <div class="booking-form">
+        <label>Fit Booking</label>
+        <input type="text" class="form-control" placeholder="Time"/>
+        <label>Date</label>
+        <input type="text" class="form-control" placeholder="0/0/20XX"/>
+        <label> Name</label>
+        <input type="text" class="form-control" placeholder="Name"/>
+         </div>
+    </div>
+
+
+
+
+
+
+
+
+
+  )
 }
+export default scheduler;
 
 
-export default schedule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

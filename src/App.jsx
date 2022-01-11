@@ -9,7 +9,7 @@ import Home from "./Pages/Home/home";
 import Register from "./Pages/Register/Register";
 import jwt_decode from "jwt-decode";
 import schedule from "./Schedule/schedule";
-// import Friends from "./components/Friends/Friends";
+import Timer from "./timer/timer"
 
 
 class App extends Component {
@@ -52,7 +52,7 @@ class App extends Component {
             <TopBar user={user} />
             <div>
                 <Route
-                  path="/Home"
+                  path="/home"
                   
                   render={props => {
                     if (!user) {
@@ -66,7 +66,7 @@ class App extends Component {
                   <Route path="/Login" component={Login} />
                 <Route path="/Logout" component={LogOut} user={user} />
                 <Route path="/Schedule" component={schedule} />
-                {/* <Route path="/timer" component={timer} /> */}
+                <Route path="/timer" component={Timer} />
                 {/* <Redirect to="/not-found"/> */}
             </div>
           </div>
