@@ -3,33 +3,56 @@ import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./TopBar.css";
 import { ReactComponent as Logo } from "./logo.svg";
 
+function TopBar({ user, logout }) {
+  const showLoginLogout = (user) => {
+    console.log(
+      "login logout button show function caLled, is user present",
+      !!user
+    );
 
-function TopBar({user}){
+    let result = (
+      <>
+        <li>
+          <a href="./Schedule">Schedule</a>
+        </li>
+        <li>
+          <a href="./timer">Timer</a>
+        </li>
+        <li>
+          <a href="./WorkoutLog">Workout Log</a>
+        </li>
+        <li>
+          <a onClick={logout}>Logout</a>
+        </li>
+      </>
+    );
 
-    return( 
-            <div>
-                {user}
-            <nav>
-                <label class="logo"> Fit Friendly</label>
-                <ul>
-                    <li><a  class="active" href="./Home">Home</a>
-                    </li>
-                    <li><a href="./Schedule">Schedule</a>
-                    </li>
-                    <li><a href="./timer">Timer</a>
-                    </li>
-                    <li><a href="./WorkoutLog">Workout Log</a>
-                    </li>
-                    <li><a href="./LogOut">Logout</a>
-                    </li>
-                </ul>
-                <label id="icon">
-                    <i class="fas fa-bars"></i>
-                </label>
-            </nav>
-            </div>
-    )
+    if (!user) {
+      result = "";
+    }
+    return result;
+  };
+  return (
+    <div>
+      <nav>
+        <label className="logo"> Fit Friendly</label>
+
+        <ul>
+          <li>
+            <a className="active" href="./Home">
+              Home
+            </a>
+          </li>
+
+          {showLoginLogout(user)}
+        </ul>
+
+        <label id="icon">
+          <i className="fas fa-bars"></i>
+        </label>
+      </nav>
+    </div>
+  );
 }
 
-export default  TopBar;
-
+export default TopBar;

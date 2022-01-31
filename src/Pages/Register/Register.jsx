@@ -27,8 +27,8 @@ function Register(){
     return(
 
         <div className="container">
-            <div class="row">
-              <div class="col">
+            <div className="row">
+              <div className="col">
             </div>
           <div className="card text-white bg-dark" style={{width: "18rem"}}>
             <div className="card-body">
@@ -49,7 +49,7 @@ function Register(){
                     <p>Register as Trainer?</p>
                     <input type = "checkbox" onChange={()=>{setIsAdmin(true)}}/>
                 <p>Create an account</p>
-                <button class="bg-dark" type='submit' ><h3>Register</h3></button>
+                <button className="bg-dark" type='submit' ><h3>Register</h3></button>
                 </div>
                 </form>
                 <Link to='/Login'>

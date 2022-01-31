@@ -32,14 +32,38 @@ class App extends Component {
   // }
 
   componentDidMount() {
+    this.updateUser();
+  }
+
+  logout(event) {
+    event.preventDefault();
+
+    this.setState({ user: null }, () => {
+      //clear token
+      localStorage.removeItem("token");
+
+      window.location = "/home";
+    });
+
+    console.log("app.logout triggered");
+  }
+
+  updateUser() {
     const jwt = localStorage.getItem("token");
     try {
+      if (!jwt) return;
+
       const decodedUser = jwt_decode(jwt);
+      console.log("token present, user logged in", decodedUser);
+
       console.log(decodedUser);
+
       this.setState({
         user: decodedUser,
       });
-    } catch {}
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   render() {
@@ -49,7 +73,10 @@ class App extends Component {
       <Router>
         <Switch>
           <div>
-            <TopBar user={user} />
+            <TopBar
+              user={user}
+              logout={(event) => this.logout(event)}
+            />
             <div>
               {/* <Route
                 path="/home"
@@ -63,7 +90,16 @@ class App extends Component {
 
               /> */}
 
-              <Route path="/home" component={Home} user={user}/>
+              <Route
+                path="/home"
+                // component={Home}
+                // user={this.state.user}
+                // updateUser={() => {
+                //   this.updateUser();
+                // }}
+              >
+                <Home user={user} updateUser={()=>{this.updateUser()}}></Home>
+              </Route>
               <Route path="/Register" component={Register} />
               <Route path="/Login" component={Login} />
               <Route path="/Logout" component={LogOut} user={user} />

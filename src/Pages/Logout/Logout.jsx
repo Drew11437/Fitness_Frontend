@@ -1,19 +1,25 @@
-import React from "react"
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-const LogOut=() =>{
+const LogOut = ({ user }) => {
+  let history = useHistory();
 
-    function logout(){
-        localStorage.removeItem('token')
-        window.location = '/login';
-    }
+  useEffect(() => {
+    console.log("there is a user", user);
+  }, [user]);
 
-    return(
+  function logout() {
+    localStorage.removeItem("token");
+    window.location = "/login";
+  }
 
-             <div>
-                <button className = "LogOut-button" onClick={logout}>LogOut</button>
-            </div>
-
-    )
-}
+  return (
+    <div>
+      <button className="LogOut-button" onClick={logout}>
+        LogOut
+      </button>
+    </div>
+  );
+};
 
 export default LogOut;

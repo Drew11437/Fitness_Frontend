@@ -32,21 +32,21 @@ function Scheduler(props) {
 
 
   return(
-    <div class= "booking-form-box">
+    <div className= "booking-form-box">
       <form onSubmit={handleSubmit}> 
-      <div class="radio-btn">
-      <input type="radio" class="btn" name="check" checked= "checked"/><span>Hour</span>
-      <input type="radio" class="btn" name="check"/><span>30min</span>
-      <input type="radio" class="btn" name="check"/><span>Consultation</span>
+      <div className="radio-btn">
+      <input type="radio" className="btn" name="check" checked= "checked"/><span>Hour</span>
+      <input type="radio" className="btn" name="check"/><span>30min</span>
+      <input type="radio" className="btn" name="check"/><span>Consultation</span>
       </div>
 
-      <div class="booking-form">
+      <div className="booking-form">
         <label>Fit Booking</label>
-        <input type="time" class="form-control" placeholder="Time"  value={time} onChange={(e) => setTime(e.target.value)}/>
+        <input type="time" className="form-control" placeholder="Time"  value={time} onChange={(e) => setTime(e.target.value)}/>
         <label>Date</label>
-        <input type="date" class="form-control select-date" placeholder="0/0/20XX" value={appointmentDate} onChange={(e) => setDate(e.target.value)}/>
+        <input type="date" className="form-control select-date" placeholder="0/0/20XX" value={appointmentDate} onChange={(e) => setDate(e.target.value)}/>
         <label> Email</label> 
-        <input type="email" class="form-control" placeholder="email" value={email} onChange={(e) => setemail(e.target.value)}/>
+        <input type="email" className="form-control" placeholder="email" value={email} onChange={(e) => setemail(e.target.value)}/>
         <button type="submit" value="Sumbit"> Submit</button>
          </div>
       </form>
