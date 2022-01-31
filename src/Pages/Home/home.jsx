@@ -252,7 +252,7 @@ import scheduler from "../../Schedule/schedule";
 
         <nav>
           <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="./Home">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Classes</a></li>
             <li><a href="#">Instructors</a></li>

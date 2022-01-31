@@ -2,14 +2,30 @@ import "./schedule.css"
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function scheduler({user}){
+function Scheduler(props) {
+  const [time, setTime] = useState("");
+  const [appointmentDate, setDate] = useState("");
+  const [email, setemail] = useState("");
+
+  async function handleSubmit(event) {
+    //stop default behaviour
+   try{ event.preventDefault();
+    let response = await axios.post("http://localhost:5000/api/appointments/",{header:{Authorization:"Bearer" + localStorage.getItem ('token'),
+      email: email,
+      appointmentDate: appointmentDate,
+      time: time,
+    }});
+    console.log(response.data);
+    // Save token in local storage and refresh page
+    setDate(response.data);
+  }catch{
+   setDate({})
+   }
+
+  }
 
 
-
-
-
-
-
+  // const token = req.header("x-auth-token");
 
 
 
@@ -17,6 +33,7 @@ function scheduler({user}){
 
   return(
     <div class= "booking-form-box">
+      <form onSubmit={handleSubmit}> 
       <div class="radio-btn">
       <input type="radio" class="btn" name="check" checked= "checked"/><span>Hour</span>
       <input type="radio" class="btn" name="check"/><span>30min</span>
@@ -25,15 +42,16 @@ function scheduler({user}){
 
       <div class="booking-form">
         <label>Fit Booking</label>
-        <input type="text" class="form-control" placeholder="Time"/>
+        <input type="time" class="form-control" placeholder="Time"  value={time} onChange={(e) => setTime(e.target.value)}/>
         <label>Date</label>
-        <input type="text" class="form-control" placeholder="0/0/20XX"/>
-        <label> Name</label>
-        <input type="text" class="form-control" placeholder="Name"/>
+        <input type="date" class="form-control select-date" placeholder="0/0/20XX" value={appointmentDate} onChange={(e) => setDate(e.target.value)}/>
+        <label> Email</label> 
+        <input type="email" class="form-control" placeholder="email" value={email} onChange={(e) => setemail(e.target.value)}/>
+        <button type="submit" value="Sumbit"> Submit</button>
          </div>
+      </form>
+
     </div>
-
-
 
 
 
@@ -43,7 +61,7 @@ function scheduler({user}){
 
   )
 }
-export default scheduler;
+export default Scheduler;
 
 
 

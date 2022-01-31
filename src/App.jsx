@@ -1,5 +1,5 @@
 // import Profile from "./Pages/Profile/Profile";
-import {BrowserRouter as Router, Route,  Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import TopBar from "./Pages/TopBar/TopBar";
@@ -8,14 +8,14 @@ import Login from "./Pages/Login/Login";
 import Home from "./Pages/Home/home";
 import Register from "./Pages/Register/Register";
 import jwt_decode from "jwt-decode";
-import schedule from "./Schedule/schedule";
-import Timer from "./timer/timer"
-
+import Schedule from "./Schedule/schedule";
+import Timer from "./timer/timer";
+import log from "./WorkoutLog/Log";
 
 class App extends Component {
-  state={
-    user:''
-  }
+  state = {
+    user: "",
+  };
   // constructor(props) {
   //   super(props);
   //   const jwt = localStorage.getItem("token");
@@ -35,7 +35,7 @@ class App extends Component {
     const jwt = localStorage.getItem("token");
     try {
       const decodedUser = jwt_decode(jwt);
-      console.log(decodedUser)
+      console.log(decodedUser);
       this.setState({
         user: decodedUser,
       });
@@ -45,35 +45,37 @@ class App extends Component {
   render() {
     let user = this.state.user;
     console.log(user);
-    return ( 
-    <Router> 
-      <Switch>
-            <div>
+    return (
+      <Router>
+        <Switch>
+          <div>
             <TopBar user={user} />
             <div>
-                <Route
-                  path="/home"
-                  
-                  render={props => {
-                    if (!user) {
-                      <Redirect from="*" to="/Login" />;
-                    } else {
-                      return <Home {...props} user={user} />;
-                    }
-                  }}
-                />
-                <Route path="/Register" component={Register} />
-                  <Route path="/Login" component={Login} />
-                <Route path="/Logout" component={LogOut} user={user} />
-                <Route path="/Schedule" component={schedule} />
-                <Route path="/timer" component={Timer} />
-                {/* <Redirect to="/not-found"/> */}
+              {/* <Route
+                path="/home"
+                render={(props) => {
+                  if (!user) {
+                    <Redirect from="*" to="/Login" />;
+                  } else {
+                    return <Home {...props} user={user} />;
+                  }
+                }}
+
+              /> */}
+
+              <Route path="/home" component={Home} user={user}/>
+              <Route path="/Register" component={Register} />
+              <Route path="/Login" component={Login} />
+              <Route path="/Logout" component={LogOut} user={user} />
+              <Route path="/Schedule" component={Schedule} />
+              <Route path="/timer" component={Timer} />
+              <Route path="/log" component={log} />
+              {/* <Redirect to="/not-found"/> */}
             </div>
           </div>
-       </Switch>
+        </Switch>
       </Router>
     );
   }
 }
 export default App;
-
