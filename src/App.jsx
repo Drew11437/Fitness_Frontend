@@ -105,7 +105,7 @@ class App extends Component {
               <Route path="/Logout" component={LogOut} user={user} />
               <Route path="/Schedule" component={Schedule} />
               <Route path="/timer" component={Timer} />
-              <Route path="/log" component={log} />
+              <Route path="/WorkoutLog" component={log} />
               {/* <Redirect to="/not-found"/> */}
             </div>
           </div>

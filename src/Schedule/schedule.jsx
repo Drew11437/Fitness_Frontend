@@ -8,16 +8,26 @@ function Scheduler(props) {
   const [email, setemail] = useState("");
 
   async function handleSubmit(event) {
+    let user = JSON.parse(localStorage.getItem ('token'));
+    const token = user.data.id;
+    const api = "http://localhost:5000/api/appointments/"
     //stop default behaviour
-   try{ event.preventDefault();
-    let response = await axios.post("http://localhost:5000/api/appointments/",{header:{Authorization:"Bearer" + localStorage.getItem ('token'),
+    event.preventDefault();
+   try{ 
+    let response = await axios.post(api,{Headers:{"Authorization" :`Bearer ${token} `,
       email: email,
       appointmentDate: appointmentDate,
-      time: time,
-    }});
-    console.log(response.data);
+      time: time
+    }})
+    .then(response => { 
+      console.log(response);
+      this.setState({
+        items: response.data,
+        isLoaded : true,
+        redirectToRefferer: false
+      })
+    })
     // Save token in local storage and refresh page
-    setDate(response.data);
   }catch{
    setDate({})
    }
@@ -32,22 +42,22 @@ function Scheduler(props) {
 
 
   return(
-    <div className= "booking-form-box">
+    <div class= "booking-form-box">
       <form onSubmit={handleSubmit}> 
-      <div className="radio-btn">
-      <input type="radio" className="btn" name="check" checked= "checked"/><span>Hour</span>
-      <input type="radio" className="btn" name="check"/><span>30min</span>
-      <input type="radio" className="btn" name="check"/><span>Consultation</span>
+      <div class="radio-btn">
+      <input type="radio" class="btn" name="check" checked= "checked"/><span>Hour</span>
+      <input type="radio" class="btn" name="check"/><span>30min</span>
+      <input type="radio" class="btn" name="check"/><span>Consultation</span>
       </div>
 
-      <div className="booking-form">
+      <div class="booking-form">
         <label>Fit Booking</label>
-        <input type="time" className="form-control" placeholder="Time"  value={time} onChange={(e) => setTime(e.target.value)}/>
+        <input type="time" class="form-control" placeholder="Time"  value={time} onChange={(e) => setTime(e.target.value)}/>
         <label>Date</label>
-        <input type="date" className="form-control select-date" placeholder="0/0/20XX" value={appointmentDate} onChange={(e) => setDate(e.target.value)}/>
+        <input type="date" class="form-control select-date" placeholder="0/0/20XX" value={appointmentDate} onChange={(e) => setDate(e.target.value)}/>
         <label> Email</label> 
-        <input type="email" className="form-control" placeholder="email" value={email} onChange={(e) => setemail(e.target.value)}/>
-        <button type="submit" value="Sumbit"> Submit</button>
+        <input type="email" class="form-control" placeholder="email" value={email} onChange={(e) => setemail(e.target.value)}/>
+        <button type="submit" value="Sumbit" onSubmit={handleSubmit}> Submit</button>
          </div>
       </form>
 

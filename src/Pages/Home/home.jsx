@@ -204,7 +204,7 @@ function Home({ user, updateUser }) {
           <div id="trainers-slider">
             <div className="trainer-slider-item">
               <img
-                src="https://onclickwebdesign.com/wp-content/uploads/trainer-1.jpg"
+                src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/fit-black-women-instagram-1598028487.png?crop=0.494xw:0.987xh;0,0&resize=640:*"
                 alt="Rachel Smith Personal Trainer"
               />
               <h4>Rachel Smith</h4>
@@ -213,7 +213,7 @@ function Home({ user, updateUser }) {
 
             <div className="trainer-slider-item">
               <img
-                src="https://onclickwebdesign.com/wp-content/uploads/trainer-2.jpg"
+                src="https://images.wsj.net/im-358942?width=1280&size=1"
                 alt="Nick Andros Personal Trainer"
               />
               <h4>Nick Andros</h4>
@@ -222,7 +222,7 @@ function Home({ user, updateUser }) {
 
             <div className="trainer-slider-item">
               <img
-                src="https://onclickwebdesign.com/wp-content/uploads/trainer-3.jpg"
+                src="https://www.bodybuilding.com/images/2019/july/best-beginner-weight-training-guide-with-easy-to-follow-workout-1b-700xh.jpg"
                 alt="Larry Underwood Personal Trainer"
               />
               <h4>Larry Underwood</h4>
@@ -231,7 +231,7 @@ function Home({ user, updateUser }) {
 
             <div className="trainer-slider-item">
               <img
-                src="https://onclickwebdesign.com/wp-content/uploads/trainer-1.jpg"
+                src="https://cdn6.dissolve.com/p/D985_34_014/D985_34_014_1200.jpg"
                 alt="Rachel Smith Personal Trainer"
               />
               <h4>Rachel Smith</h4>
@@ -240,16 +240,16 @@ function Home({ user, updateUser }) {
 
             <div className="trainer-slider-item">
               <img
-                src="https://onclickwebdesign.com/wp-content/uploads/trainer-2.jpg"
+                src="https://assets.sweat.com/shopify_articles/images/010/005/285/original/BackToGymSWEATf1f07a7f6f79e7b8807d2436a6ae8e8b.jpg?1625801362"
                 alt="Nick Andros Personal Trainer"
               />
-              <h4>Nick Andros</h4>
+              <h4>Lisa Andros</h4>
               <p>Pilates Instructor</p>
             </div>
 
             <div className="trainer-slider-item">
               <img
-                src="https://onclickwebdesign.com/wp-content/uploads/trainer-3.jpg"
+                src="https://www.issaonline.com/blog/img/posts/716/issa-how-much-do-group-instructors-make.jpg"
                 alt="Larry Underwood Personal Trainer"
               />
               <h4>Larry Underwood</h4>
