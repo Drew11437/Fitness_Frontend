@@ -10,7 +10,7 @@ import Register from "./Pages/Register/Register";
 import jwt_decode from "jwt-decode";
 import Schedule from "./Schedule/schedule";
 import Timer from "./timer/timer";
-import log from "./WorkoutLog/Log";
+import log from "./Log/Log.jsx";
 
 class App extends Component {
   state = {
@@ -105,7 +105,7 @@ class App extends Component {
               <Route path="/Logout" component={LogOut} user={user} />
               <Route path="/Schedule" component={Schedule} />
               <Route path="/timer" component={Timer} />
-              <Route path="/WorkoutLog" component={log} />
+              <Route path="/Log" component={log} />
               {/* <Redirect to="/not-found"/> */}
             </div>
           </div>

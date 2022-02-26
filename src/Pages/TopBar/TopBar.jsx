@@ -19,7 +19,7 @@ function TopBar({ user, logout }) {
           <a href="./timer">Timer</a>
         </li>
         <li>
-          <a href="./WorkoutLog">Workout Log</a>
+          <a href="./Log">Workout Log</a>
         </li>
         <li>
           <a onClick={logout}>Logout</a>
