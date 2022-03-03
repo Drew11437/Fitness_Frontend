@@ -11,7 +11,7 @@ body{
     padding:60px;
     /* position:absolute; */
     top:50%;
-    left:50;
+    left:50%;
     transform: translate(-50%, -50);
     background: rgba(0,0,0,0.4);
     text-align:center;
@@ -59,4 +59,9 @@ cursor:pointer;
 
 .box input[type="submit"]:hover{
     background: yellow;
+}
+
+.Register
+{
+    color: aliceblue;
 }

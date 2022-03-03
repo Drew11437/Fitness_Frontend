@@ -26,16 +26,10 @@ function Register(){
 
     return(
 
-        <div className="container">
-            <div className="row">
-              <div className="col">
-            </div>
-          <div className="card text-white bg-dark" style={{width: "18rem"}}>
-            <div className="card-body">
-              <form onSubmit={handleSubmit}>
+        <form className="box" method="Post">
                 <div className="form-group" size="lg" controlId="name">
                     <label className="form-label">
-                        <h3>Fitness Pro</h3>
+                        <h4>Create account</h4>
                     <input autoFocus type="Name" value={Name} onChange={(e) => setName(e.target.value)} />
                     </label>
                 </div>
@@ -43,22 +37,13 @@ function Register(){
                     <label>Email</label>
                     <input autoFocus type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
-                <div className="form-group" size="lg" controlId="password">
                     <label>Password</label>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control"/>
-                    <p>Register as Trainer?</p>
                     <input type = "checkbox" onChange={()=>{setIsAdmin(true)}}/>
-                <p>Create an account</p>
-                <button className="bg-dark" type='submit' ><h3>Register</h3></button>
-                </div>
-                </form>
                 <Link to='/Login'>
                     <button className="btn btn-primary">Already a user? Login Here</button>
                 </Link>
-             </div>
-	      </div>
-        </div>
-      </div>
+      </form>
 	);
 }
 

@@ -1,0 +1,8 @@
+container{
+    
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background: url("../../../img/stronger.jpg");
+    background-size: cover;
+}

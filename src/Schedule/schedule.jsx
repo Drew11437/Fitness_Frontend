@@ -8,17 +8,18 @@ function Scheduler(props) {
   const [email, setemail] = useState("");
 
   async function handleSubmit(event) {
-    let user = JSON.parse(localStorage.getItem ('token'));
-    const token = user.data.id;
+    console.log(localStorage.getItem (`token`));
+    const token = localStorage.getItem('token').split(".")[0];
     const api = "http://localhost:5000/api/appointments/"
     //stop default behaviour
     event.preventDefault();
    try{ 
-    let response = await axios.post(api,{Headers:{"Authorization" :`Bearer ${token} `,
+      axios.post(api,{headers:{"Authorization" :`Bearer ${token}`}},
+      {
       email: email,
       appointmentDate: appointmentDate,
       time: time
-    }})
+    })
     .then(response => { 
       console.log(response);
       this.setState({
@@ -57,7 +58,7 @@ function Scheduler(props) {
         <input type="date" class="form-control select-date" placeholder="0/0/20XX" value={appointmentDate} onChange={(e) => setDate(e.target.value)}/>
         <label> Email</label> 
         <input type="email" class="form-control" placeholder="email" value={email} onChange={(e) => setemail(e.target.value)}/>
-        <button type="submit" value="Sumbit" onSubmit={handleSubmit}> Submit</button>
+        <button type="submit" value="Sumbit" > Submit</button>
          </div>
       </form>
 
