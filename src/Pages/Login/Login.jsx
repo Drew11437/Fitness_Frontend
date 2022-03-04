@@ -27,7 +27,7 @@ function Login({updateUser}) {
       <input
         type="text"
         name=""
-        placeholder="Enter Username"
+        placeholder="Enter email"
         id="username"
         value={email}
         onChange={(e) => setEmail(e.target.value)}

@@ -18,7 +18,7 @@ function Register(){
 		password: password,
         isAdmin: isAdmin
 		};
-	    let response = await axios.post("http://localhost:5000/api/users/register", registerPost);
+	    let response = await axios.post("http://localhost:5000/api/users/Register", registerPost);
 		console.log(response.data)
 		localStorage.setItem('token', response.data);
 		window.location = '/login';
@@ -26,12 +26,11 @@ function Register(){
 
     return(
 
-        <form className="box" method="Post">
+        <form className="box" onClick={handleSubmit} method="Post">
                 <div className="form-group" size="lg" controlId="name">
-                    <label className="form-label">
+                    <label className="form-label"/>
                         <h4>Create account</h4>
                     <input autoFocus type="Name" value={Name} onChange={(e) => setName(e.target.value)} />
-                    </label>
                 </div>
                 <div className="form-group" size="lg" controlId="email">
                     <label>Email</label>
@@ -40,6 +39,8 @@ function Register(){
                     <label>Password</label>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control"/>
                     <input type = "checkbox" onChange={()=>{setIsAdmin(true)}}/>
+                   
+                    <button type="onClick" name="" value="Register"> Register ME! </button>
                 <Link to='/Login'>
                     <button className="btn btn-primary">Already a user? Login Here</button>
                 </Link>
