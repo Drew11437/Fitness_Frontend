@@ -8,32 +8,32 @@ function Scheduler(props) {
   const [email, setemail] = useState("");
 
   async function handleSubmit(event) {
-    console.log(localStorage.getItem (`token`));
-    const token = localStorage.getItem('token').split(".")[0];
-    const api = "http://localhost:5000/api/appointments/"
-    //stop default behaviour
     event.preventDefault();
-   try{ 
-      axios.post(api,{headers:{"Authorization" :`Bearer ${token}`}},
-      {
-      email: email,
-      appointmentDate: appointmentDate,
-      time: time
-    })
-    .then(response => { 
-      console.log(response);
-      this.setState({
-        items: response.data,
-        isLoaded : true,
-        redirectToRefferer: false
-      })
-    })
-    // Save token in local storage and refresh page
-  }catch{
-   setDate({})
-   }
+    const jwt = localStorage.getItem('token').split(".")[0];
+    const api = "http://localhost:5000/api/appointments/post"
+    let configObject = {
+      headers: {
+        "x-auth-token": jwt,
+      },
+    };
 
+     let response = await axios.post(
+      api,
+      {
+        time: time,
+        appointmentDate: appointmentDate,
+        email: email,
+      },
+      configObject
+    );
+    console.log(response.data);
+
+    window.location = "/Home";
   }
+    //stop default behaviour
+    // Save token in local storage and refresh page
+
+  
 
 
   // const token = req.header("x-auth-token");
