@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import TopBar from "./Pages/TopBar/TopBar";
-import LogOut from "./Pages/LogOut/Logout";
+import LogOut from "./Pages/Logout/Logout";
 import Login from "./Pages/Login/Login";
 import Home from "./Pages/Home/home";
 import Register from "./Pages/Register/Register";
